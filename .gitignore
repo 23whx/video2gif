@@ -72,8 +72,8 @@ public/gif.worker.js
 # Optional REPL history
 .node_repl_history
 
-# Package manager lock files (uncomment if needed)
-# package-lock.json
+# Package manager lock files
+package-lock.json
 # yarn.lock
 # pnpm-lock.yaml
 

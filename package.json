@@ -8,7 +8,8 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "postinstall": "node -e \"try{require('fs').copyFileSync('node_modules/gif.js/dist/gif.js','public/gif.js');require('fs').copyFileSync('node_modules/gif.js/dist/gif.worker.js','public/gif.worker.js');}catch(e){}\""
   },
   "dependencies": {
     "@astrojs/react": "^3.6.2",
@@ -31,5 +32,8 @@
     "typescript": "^5.6.2",
     "vite-plugin-pwa": "^0.20.5",
     "workbox-window": "^7.1.0"
+  },
+  "overrides": {
+    "rollup": "^4.24.0"
   }
 }
