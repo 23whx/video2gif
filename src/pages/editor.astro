@@ -3,9 +3,26 @@ import Layout from '../components/Layout.astro';
 import Navigation from '../components/Navigation';
 import EditorApp from '../components/EditorApp';
 import I18nProvider from '../components/I18nProvider';
+import { getSEOData, detectLanguageFromHeaders } from '../utils/seo';
+
+// 从 URL 参数或浏览器语言检测语言
+const urlLang = Astro.url.searchParams.get('lang');
+const browserLang = detectLanguageFromHeaders(Astro.request.headers);
+const currentLang = urlLang || browserLang;
+
+// 获取 SEO 数据
+const seoData = getSEOData('editor', currentLang);
 ---
 
-<Layout title="Editor - Video2GIF">
+<Layout 
+  title={seoData.title}
+  description={seoData.description}
+  keywords={seoData.keywords}
+  lang={currentLang}
+  ogImage={seoData.ogImage}
+  ogImageAlt={seoData.ogImageAlt}
+  page="editor"
+>
   <I18nProvider client:only="react">
     <Navigation client:only="react" />
     <EditorApp client:only="react" />

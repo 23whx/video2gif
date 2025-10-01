@@ -3,6 +3,33 @@
     "name": "Video2GIF",
     "tagline": "Turn moments into lightweight GIFs."
   },
+  "seo": {
+    "home": {
+      "title": "Video2GIF - Online Video to GIF Converter | Free, Fast & Private",
+      "description": "Free online video to GIF converter with local browser processing, no upload required. Supports MP4, MOV and more. Create high-quality animated GIFs while protecting your privacy.",
+      "keywords": "video to gif,gif maker,video converter,gif generator,free gif tool,local processing,privacy protection"
+    },
+    "editor": {
+      "title": "Video Editor - Video2GIF",
+      "description": "Powerful online video to GIF editor with customizable size, frame rate, quality settings. Real-time preview and fast export of high-quality animated GIFs.",
+      "keywords": "video editor,gif editor,online editor,video trimming,gif optimization"
+    },
+    "about": {
+      "title": "About Us - Video2GIF",
+      "description": "Video2GIF is a privacy-focused online video to GIF converter. All processing is done locally in your browser with offline support.",
+      "keywords": "about video2gif,privacy policy,open source,pwa"
+    },
+    "support": {
+      "title": "Help & Support - Video2GIF",
+      "description": "Video2GIF FAQ including supported video formats, file size limits, offline usage and more.",
+      "keywords": "faq,help center,technical support,tutorial"
+    },
+    "og": {
+      "siteName": "Video2GIF",
+      "image": "/og-image.png",
+      "imageAlt": "Video2GIF - Video to GIF Converter"
+    }
+  },
   "nav": {
     "home": "Home",
     "editor": "Editor",

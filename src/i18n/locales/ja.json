@@ -3,6 +3,33 @@
     "name": "Video2GIF",
     "tagline": "瞬間を、軽やかな GIF に。"
   },
+  "seo": {
+    "home": {
+      "title": "Video2GIF - オンライン動画→GIF変換ツール | 無料・高速・プライバシー保護",
+      "description": "無料のオンライン動画→GIF変換ツール。ローカルブラウザ処理でアップロード不要。MP4、MOVなどに対応し、高品質なGIFアニメーションを素早く生成。プライバシーを保護します。",
+      "keywords": "動画をGIFに,GIF作成,動画変換,GIFジェネレーター,無料GIFツール,ローカル処理,プライバシー保護"
+    },
+    "editor": {
+      "title": "動画エディター - Video2GIF",
+      "description": "強力なオンライン動画→GIFエディター。サイズ、フレームレート、品質などをカスタマイズ可能。リアルタイムプレビューで高品質なGIFアニメーションを素早く書き出せます。",
+      "keywords": "動画エディター,GIFエディター,オンライン編集,動画トリミング,GIF最適化"
+    },
+    "about": {
+      "title": "について - Video2GIF",
+      "description": "Video2GIF はプライバシーを重視したオンライン動画→GIF変換ツールです。すべての処理はブラウザ内でローカルに行われ、オフラインでも使用できます。",
+      "keywords": "Video2GIFについて,プライバシーポリシー,オープンソース,PWA"
+    },
+    "support": {
+      "title": "ヘルプとサポート - Video2GIF",
+      "description": "Video2GIF のよくある質問。対応動画形式、ファイルサイズ制限、オフライン使用などに関する回答。",
+      "keywords": "よくある質問,ヘルプセンター,技術サポート,チュートリアル"
+    },
+    "og": {
+      "siteName": "Video2GIF",
+      "image": "/og-image.png",
+      "imageAlt": "Video2GIF - 動画→GIF変換ツール"
+    }
+  },
   "nav": {
     "home": "ホーム",
     "editor": "エディター",

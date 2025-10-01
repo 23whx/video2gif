@@ -1,0 +1,24 @@
+# Open Graph 图片说明
+
+这个文件夹需要包含 og-image.png 文件用于社交媒体分享预览。
+
+## 推荐规格：
+- 尺寸：1200 x 630 像素（1.91:1 宽高比）
+- 格式：PNG 或 JPG
+- 文件大小：< 1MB
+- 内容：应包含 Video2GIF logo 和简洁的产品描述
+
+## 设计建议：
+- 背景色：#E8F5E9（品牌淡绿色）
+- 强调色：#E95656（品牌红色）
+- 包含文字：Video2GIF - 视频转 GIF 工具
+- 包含图标或截图展示产品功能
+
+## 使用工具：
+可以使用 Figma、Canva 或其他设计工具创建。
+
+## 测试工具：
+- Facebook Sharing Debugger: https://developers.facebook.com/tools/debug/
+- Twitter Card Validator: https://cards-dev.twitter.com/validator
+- LinkedIn Post Inspector: https://www.linkedin.com/post-inspector/
+

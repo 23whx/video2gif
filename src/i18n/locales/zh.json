@@ -3,6 +3,33 @@
     "name": "Video2GIF",
     "tagline": "把精彩瞬间，做成轻盈 GIF。"
   },
+  "seo": {
+    "home": {
+      "title": "Video2GIF - 在线视频转GIF工具 | 免费、快速、保护隐私",
+      "description": "免费在线视频转GIF工具，支持本地浏览器处理，无需上传。支持MP4、MOV等格式，快速生成高质量GIF动图，保护您的隐私安全。",
+      "keywords": "视频转GIF,在线GIF制作,视频转动图,GIF生成器,免费GIF工具,本地处理,隐私保护"
+    },
+    "editor": {
+      "title": "视频编辑器 - Video2GIF",
+      "description": "强大的在线视频转GIF编辑器，支持自定义尺寸、帧率、质量等参数，实时预览，快速导出高质量GIF动图。",
+      "keywords": "视频编辑器,GIF编辑器,在线编辑,视频裁剪,GIF优化"
+    },
+    "about": {
+      "title": "关于我们 - Video2GIF",
+      "description": "Video2GIF 是一款注重隐私保护的在线视频转GIF工具，所有处理在浏览器本地完成，支持离线使用。",
+      "keywords": "关于Video2GIF,隐私政策,开源,PWA"
+    },
+    "support": {
+      "title": "帮助与支持 - Video2GIF",
+      "description": "Video2GIF 常见问题解答，包括支持的视频格式、文件大小限制、离线使用等问题的解答。",
+      "keywords": "常见问题,帮助中心,技术支持,使用教程"
+    },
+    "og": {
+      "siteName": "Video2GIF",
+      "image": "/og-image.png",
+      "imageAlt": "Video2GIF - 视频转GIF工具"
+    }
+  },
   "nav": {
     "home": "首页",
     "editor": "编辑器",

@@ -4,9 +4,26 @@ import Navigation from '../components/Navigation';
 import AboutPage from '../components/AboutPage';
 import Footer from '../components/Footer';
 import I18nProvider from '../components/I18nProvider';
+import { getSEOData, detectLanguageFromHeaders } from '../utils/seo';
+
+// 从 URL 参数或浏览器语言检测语言
+const urlLang = Astro.url.searchParams.get('lang');
+const browserLang = detectLanguageFromHeaders(Astro.request.headers);
+const currentLang = urlLang || browserLang;
+
+// 获取 SEO 数据
+const seoData = getSEOData('about', currentLang);
 ---
 
-<Layout title="About - Video2GIF">
+<Layout 
+  title={seoData.title}
+  description={seoData.description}
+  keywords={seoData.keywords}
+  lang={currentLang}
+  ogImage={seoData.ogImage}
+  ogImageAlt={seoData.ogImageAlt}
+  page="about"
+>
   <I18nProvider client:only="react">
     <Navigation client:only="react" />
     <AboutPage client:only="react" />

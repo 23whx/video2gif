@@ -1,5 +1,26 @@
+# robots.txt for Video2GIF
+# https://www.robotstxt.org/
+
 User-agent: *
 Allow: /
 
-Sitemap: https://yourdomain.com/sitemap.xml
+# 禁止爬取隐私页面和临时文件
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /manifest.json
 
+# 站点地图
+Sitemap: https://video2gif.com/sitemap.xml
+
+# 主要搜索引擎爬虫
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# 爬取延迟（秒）
+Crawl-delay: 1

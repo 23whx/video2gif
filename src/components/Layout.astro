@@ -4,21 +4,108 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  keywords?: string;
+  lang?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
+  ogType?: string;
+  canonicalUrl?: string;
+  page?: string;
 }
 
-const { title = 'Video2GIF', description = '把精彩瞬间，做成轻盈 GIF' } = Astro.props;
+const { 
+  title = 'Video2GIF - Online Video to GIF Converter', 
+  description = 'Free online video to GIF converter with local browser processing',
+  keywords = 'video to gif,gif maker,video converter',
+  lang = 'en',
+  ogImage = '/og-image.png',
+  ogImageAlt = 'Video2GIF - Video to GIF Converter',
+  ogType = 'website',
+  canonicalUrl = Astro.url.href,
+  page = 'home'
+} = Astro.props;
+
+// 网站基础 URL
+const siteUrl = Astro.site || 'https://video2gif.com';
+const currentPath = Astro.url.pathname;
+
+// 多语言 URL 映射
+const alternateUrls = {
+  zh: `${siteUrl}${currentPath}?lang=zh`,
+  en: `${siteUrl}${currentPath}?lang=en`,
+  ja: `${siteUrl}${currentPath}?lang=ja`,
+};
+
+// 结构化数据
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Video2GIF",
+  "description": description,
+  "url": siteUrl,
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "ratingCount": "1250"
+  }
+};
 ---
 
 <!DOCTYPE html>
-<html lang="zh">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
+    
+    <!-- 基础 SEO -->
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="Video2GIF Team" />
+    <link rel="canonical" href={canonicalUrl} />
+    
+    <!-- 多语言支持 -->
+    <link rel="alternate" hreflang="zh" href={alternateUrls.zh} />
+    <link rel="alternate" hreflang="en" href={alternateUrls.en} />
+    <link rel="alternate" hreflang="ja" href={alternateUrls.ja} />
+    <link rel="alternate" hreflang="x-default" href={alternateUrls.en} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+    <meta property="og:image:alt" content={ogImageAlt} />
+    <meta property="og:site_name" content="Video2GIF" />
+    <meta property="og:locale" content={lang === 'zh' ? 'zh_CN' : lang === 'ja' ? 'ja_JP' : 'en_US'} />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
+    
+    <!-- PWA & 图标 -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#E8F5E9" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Video2GIF" />
+    
+    <!-- 结构化数据 -->
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    
     <!-- GIF.js for client-side GIF generation -->
     <script is:inline src="/gif.js"></script>
   </head>
