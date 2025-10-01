@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-ink/10;
+  }
+
+  body {
+    @apply bg-bg text-ink antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+  }
+
+  h1 {
+    @apply text-4xl;
+  }
+
+  h2 {
+    @apply text-3xl;
+  }
+
+  h3 {
+    @apply text-2xl;
+  }
+
+  button {
+    @apply transition-all duration-200;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply rounded-2xl bg-accent text-surface px-6 py-3 shadow-soft hover:opacity-90 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none;
+  }
+
+  .btn-secondary {
+    @apply rounded-2xl bg-surface text-ink px-6 py-3 shadow-soft hover:bg-ink/5 focus-visible:ring-2 focus-visible:ring-ink/20 focus-visible:outline-none;
+  }
+
+  .card {
+    @apply rounded-2xl bg-surface p-6 shadow-soft;
+  }
+
+  .input {
+    @apply rounded-xl border border-ink/20 bg-surface px-4 py-2 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none;
+  }
+
+  .slider {
+    @apply w-full h-2 rounded-full bg-ink/10 appearance-none cursor-pointer;
+  }
+
+  .slider::-webkit-slider-thumb {
+    @apply appearance-none w-5 h-5 rounded-full bg-accent cursor-pointer;
+  }
+
+  .slider::-moz-range-thumb {
+    @apply w-5 h-5 rounded-full bg-accent cursor-pointer border-0;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* 支持减弱动画的用户偏好 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+

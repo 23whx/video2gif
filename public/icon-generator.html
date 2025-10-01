@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video2GIF 图标生成器</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #E8F5E9 0%, #F1FAF1 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #0F172A;
+      margin-bottom: 40px;
+      font-size: 2.5rem;
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .preview-card {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    .preview-card h3 {
+      color: #0F172A;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+
+    .icon-preview {
+      display: inline-block;
+      margin: 20px 0;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    canvas {
+      display: block;
+    }
+
+    .btn {
+      background: #E95656;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin: 5px;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    .info {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      margin-top: 30px;
+    }
+
+    .info h2 {
+      color: #E95656;
+      margin-bottom: 15px;
+    }
+
+    .info p {
+      color: #0F172A;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .color-palette {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .color-item {
+      text-align: center;
+    }
+
+    .color-box {
+      width: 80px;
+      height: 80px;
+      border-radius: 12px;
+      margin-bottom: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .color-label {
+      font-size: 0.85rem;
+      color: #0F172A;
+      font-weight: 500;
+    }
+
+    .color-code {
+      font-size: 0.75rem;
+      color: #94A3B8;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎬 Video2GIF 图标生成器</h1>
+
+    <div class="preview-grid">
+      <div class="preview-card">
+        <h3>512×512 (PWA 大图标)</h3>
+        <div class="icon-preview">
+          <canvas id="canvas512" width="512" height="512"></canvas>
+        </div>
+        <button class="btn" onclick="downloadIcon(512)">下载 icon-512.png</button>
+      </div>
+
+      <div class="preview-card">
+        <h3>192×192 (PWA 小图标)</h3>
+        <div class="icon-preview">
+          <canvas id="canvas192" width="192" height="192"></canvas>
+        </div>
+        <button class="btn" onclick="downloadIcon(192)">下载 icon-192.png</button>
+      </div>
+
+      <div class="preview-card">
+        <h3>截图预览 (1280×720)</h3>
+        <div class="icon-preview">
+          <canvas id="canvasScreenshot" width="640" height="360" style="width: 100%; height: auto;"></canvas>
+        </div>
+        <button class="btn" onclick="downloadScreenshot()">下载 screenshot-1.png</button>
+      </div>
+    </div>
+
+    <div class="info">
+      <h2>📋 使用说明</h2>
+      <p><strong>1. 预览图标：</strong>上方显示了所有尺寸的图标预览</p>
+      <p><strong>2. 下载图标：</strong>点击对应按钮下载 PNG 格式图标</p>
+      <p><strong>3. 替换文件：</strong>将下载的文件替换到 <code>public/</code> 目录中</p>
+      <p><strong>4. 删除此文件：</strong>图标生成完成后，可以删除 <code>icon-generator.html</code></p>
+
+      <h2 style="margin-top: 30px;">🎨 设计配色</h2>
+      <div class="color-palette">
+        <div class="color-item">
+          <div class="color-box" style="background: #E8F5E9;"></div>
+          <div class="color-label">淡绿色背景</div>
+          <div class="color-code">#E8F5E9</div>
+        </div>
+        <div class="color-item">
+          <div class="color-box" style="background: #E95656;"></div>
+          <div class="color-label">淡红色强调</div>
+          <div class="color-code">#E95656</div>
+        </div>
+        <div class="color-item">
+          <div class="color-box" style="background: #0F172A;"></div>
+          <div class="color-label">深色文本</div>
+          <div class="color-code">#0F172A</div>
+        </div>
+        <div class="color-item">
+          <div class="color-box" style="background: #FFFFFF; border: 1px solid #ddd;"></div>
+          <div class="color-label">白色表面</div>
+          <div class="color-code">#FFFFFF</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 绘制图标的函数
+    function drawIcon(canvas, size) {
+      const ctx = canvas.getContext('2d');
+      const scale = size / 512;
+
+      // 清空画布
+      ctx.clearRect(0, 0, size, size);
+
+      // 缩放上下文
+      ctx.save();
+      ctx.scale(scale, scale);
+
+      // 背景渐变
+      const bgGradient = ctx.createLinearGradient(0, 0, 512, 512);
+      bgGradient.addColorStop(0, '#E8F5E9');
+      bgGradient.addColorStop(1, '#C8E6C9');
+
+      // 绘制圆角矩形背景
+      ctx.fillStyle = bgGradient;
+      roundRect(ctx, 0, 0, 512, 512, 120);
+      ctx.fill();
+
+      // 绘制视频胶片框
+      ctx.fillStyle = 'rgba(15, 23, 42, 0.9)';
+      roundRect(ctx, 100, 140, 200, 240, 16);
+      ctx.fill();
+
+      // 绘制胶片孔
+      ctx.fillStyle = '#E8F5E9';
+      const holes = [170, 210, 250, 290, 330, 350];
+      holes.forEach(y => {
+        ctx.beginPath();
+        ctx.arc(120, y, 8, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(280, y, 8, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      // 绘制胶片帧
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+      roundRect(ctx, 145, 165, 110, 70, 8);
+      ctx.fill();
+      roundRect(ctx, 145, 250, 110, 70, 8);
+      ctx.fill();
+
+      // 绘制箭头
+      ctx.fillStyle = '#E95656';
+      ctx.beginPath();
+      ctx.moveTo(310, 240);
+      ctx.lineTo(360, 260);
+      ctx.lineTo(310, 280);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.fillRect(320, 255, 40, 10);
+
+      // 绘制 GIF 文本框
+      ctx.fillStyle = '#E95656';
+      roundRect(ctx, 240, 320, 180, 80, 20);
+      ctx.fill();
+
+      // 绘制 GIF 文本
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = 'bold 48px Arial, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('GIF', 330, 360);
+
+      // 装饰性圆点
+      ctx.fillStyle = 'rgba(233, 86, 86, 0.6)';
+      ctx.beginPath();
+      ctx.arc(380, 160, 6, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = 'rgba(233, 86, 86, 0.4)';
+      ctx.beginPath();
+      ctx.arc(410, 180, 4, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = 'rgba(233, 86, 86, 0.5)';
+      ctx.beginPath();
+      ctx.arc(360, 190, 5, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.restore();
+    }
+
+    // 绘制截图
+    function drawScreenshot(canvas) {
+      const ctx = canvas.getContext('2d');
+      const width = 1280;
+      const height = 720;
+      canvas.width = width;
+      canvas.height = height;
+
+      // 背景
+      const bgGradient = ctx.createLinearGradient(0, 0, width, height);
+      bgGradient.addColorStop(0, '#E8F5E9');
+      bgGradient.addColorStop(1, '#F1FAF1');
+      ctx.fillStyle = bgGradient;
+      ctx.fillRect(0, 0, width, height);
+
+      // 绘制中心图标
+      const iconSize = 200;
+      const iconX = width / 2 - iconSize / 2;
+      const iconY = height / 2 - iconSize / 2 - 80;
+
+      // 创建临时 canvas 绘制图标
+      const tempCanvas = document.createElement('canvas');
+      tempCanvas.width = iconSize;
+      tempCanvas.height = iconSize;
+      drawIcon(tempCanvas, iconSize);
+      ctx.drawImage(tempCanvas, iconX, iconY);
+
+      // 绘制标题
+      ctx.fillStyle = '#0F172A';
+      ctx.font = 'bold 56px Arial, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('Video2GIF', width / 2, height / 2 + 160);
+
+      // 绘制标语
+      ctx.fillStyle = '#94A3B8';
+      ctx.font = '32px Arial, sans-serif';
+      ctx.fillText('把精彩瞬间，做成轻盈 GIF', width / 2, height / 2 + 220);
+
+      // 绘制装饰元素
+      ctx.fillStyle = 'rgba(233, 86, 86, 0.3)';
+      ctx.beginPath();
+      ctx.arc(200, 150, 40, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = 'rgba(233, 86, 86, 0.2)';
+      ctx.beginPath();
+      ctx.arc(1080, 570, 60, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = 'rgba(233, 86, 86, 0.25)';
+      ctx.beginPath();
+      ctx.arc(width - 150, 120, 35, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // 圆角矩形辅助函数
+    function roundRect(ctx, x, y, width, height, radius) {
+      ctx.beginPath();
+      ctx.moveTo(x + radius, y);
+      ctx.lineTo(x + width - radius, y);
+      ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+      ctx.lineTo(x + width, y + height - radius);
+      ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+      ctx.lineTo(x + radius, y + height);
+      ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+      ctx.lineTo(x, y + radius);
+      ctx.quadraticCurveTo(x, y, x + radius, y);
+      ctx.closePath();
+    }
+
+    // 下载图标
+    function downloadIcon(size) {
+      const canvas = document.getElementById(`canvas${size}`);
+      const link = document.createElement('a');
+      link.download = `icon-${size}.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+
+    // 下载截图
+    function downloadScreenshot() {
+      const canvas = document.getElementById('canvasScreenshot');
+      const link = document.createElement('a');
+      link.download = 'screenshot-1.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+
+    // 页面加载时绘制所有图标
+    window.addEventListener('load', () => {
+      drawIcon(document.getElementById('canvas512'), 512);
+      drawIcon(document.getElementById('canvas192'), 192);
+      drawScreenshot(document.getElementById('canvasScreenshot'));
+    });
+  </script>
+</body>
+</html>
+

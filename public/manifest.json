@@ -1,0 +1,12 @@
+{
+  "name": "Video2GIF",
+  "short_name": "Video2GIF",
+  "description": "Turn moments into lightweight GIFs",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#E8F5E9",
+  "theme_color": "#E8F5E9",
+  "orientation": "any",
+  "icons": [],
+  "categories": ["productivity", "utilities"]
+}

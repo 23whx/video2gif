@@ -1,0 +1,15 @@
+---
+import Layout from '../components/Layout.astro';
+import Navigation from '../components/Navigation';
+import AboutPage from '../components/AboutPage';
+import Footer from '../components/Footer';
+import I18nProvider from '../components/I18nProvider';
+---
+
+<Layout title="About - Video2GIF">
+  <I18nProvider client:only="react">
+    <Navigation client:only="react" />
+    <AboutPage client:only="react" />
+    <Footer client:only="react" />
+  </I18nProvider>
+</Layout>

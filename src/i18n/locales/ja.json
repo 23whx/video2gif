@@ -1,0 +1,143 @@
+{
+  "app": {
+    "name": "Video2GIF",
+    "tagline": "瞬間を、軽やかな GIF に。"
+  },
+  "nav": {
+    "home": "ホーム",
+    "editor": "エディター",
+    "about": "について",
+    "support": "サポート"
+  },
+  "upload": {
+    "title": "動画をインポート",
+    "hint": "ドラッグ＆ドロップまたはクリックして動画ファイルを選択",
+    "formats": "対応形式：MP4、MOV、AVI、MKV、WebM、MPEG、FLV、MTS、M2TS、3GP など",
+    "maxSize": "最高のパフォーマンスのため、200MB以下を推奨",
+    "selectFile": "ファイルを選択",
+    "processing": "処理中...",
+    "error": "アップロードに失敗しました。もう一度お試しください"
+  },
+  "editor": {
+    "title": "動画エディター",
+    "preview": "プレビュー",
+    "timeline": "タイムライン",
+    "controls": "コントロールパネル",
+    "export": "書き出し"
+  },
+  "controls": {
+    "size": "サイズ",
+    "width": "幅",
+    "height": "高さ",
+    "lockAspectRatio": "縦横比を固定",
+    "aspectRatio": "縦横比",
+    "fps": "フレームレート",
+    "quality": "品質",
+    "colors": "色数",
+    "loop": "ループ",
+    "loopForever": "無限ループ",
+    "loopCount": "ループ回数",
+    "loopMode": "ループモード",
+    "forward": "順方向",
+    "reverse": "逆方向",
+    "yoyo": "往復",
+    "dither": "ディザリング",
+    "ditherNone": "なし",
+    "ditherFS": "Floyd-Steinberg",
+    "ditherOrdered": "順序付き",
+    "brightness": "明るさ",
+    "contrast": "コントラスト",
+    "saturation": "彩度",
+    "trim": "トリミング",
+    "startTime": "開始時間",
+    "endTime": "終了時間"
+  },
+  "export": {
+    "action": "GIF を書き出す",
+    "estimatedSize": "推定サイズ",
+    "progress": "進行状況",
+    "download": "再ダウンロード",
+    "share": "シェア",
+    "copyToClipboard": "クリップボードにコピー",
+    "success": "書き出しに成功しました！",
+    "error": "書き出しに失敗しました",
+    "downloading": "ダウンロード中...",
+    "downloaded": "GIF をダウンロードしました！より高品質にするには ffmpeg.wasm を統合してください",
+    "copied": "コピーしました",
+    "retry": "再試行",
+    "processing": "処理中...",
+    "generating": "GIF を生成中...",
+    "sizeWarning": "ヒント：ファイルサイズは 2MB 以下に抑えることをお勧めします。大きなファイルは書き出しに失敗する可能性があります",
+    "sizeWarningShort": "推奨 < 2MB",
+    "optimizationTips": "最適化のヒント：",
+    "tipResolution": "解像度を下げる（幅/高さ）",
+    "tipFrameRate": "フレームレートを下げる（10-15 FPS推奨）",
+    "tipDuration": "時間を短縮する（重要な部分のみ）",
+    "tipColors": "色数を減らす（128色で十分）"
+  },
+  "share": {
+    "title": "シェア",
+    "text": "Video2GIF で GIF を作成しました！",
+    "socialMedia": "ソーシャルメディアでシェア",
+    "orCopyLink": "またはウェブサイトリンクをコピー",
+    "copyWebsite": "ウェブサイトリンクをコピー",
+    "linkCopied": "リンクをコピーしました"
+  },
+  "home": {
+    "welcome": "Video2GIF へようこそ",
+    "description": "プライバシーを保護するローカルブラウザ処理対応のクロスプラットフォーム動画→GIF変換ツール",
+    "features": "主な機能",
+    "feature1": "ローカル処理",
+    "feature1Desc": "すべての変換はブラウザ内でローカルに行われ、アップロード不要",
+    "feature2": "高速で制御可能",
+    "feature2Desc": "サイズと品質を柔軟に調整してさまざまなニーズに対応",
+    "feature3": "ワンクリック共有",
+    "feature3Desc": "ダウンロードまたはクリップボードにコピーして簡単に共有",
+    "getStarted": "始める",
+    "recentPresets": "最近使用したプリセット",
+    "exampleVideos": "サンプル動画"
+  },
+  "about": {
+    "title": "Video2GIF について",
+    "privacy": "プライバシーポリシー",
+    "privacyContent": "Video2GIF はデフォルトでブラウザ内でローカルに動画を処理し、元の動画をアップロードしません。コンテンツデータは一切収集せず、製品改善のための匿名パフォーマンス指標とエラーログのみを収集します。",
+    "offline": "オフラインサポート",
+    "offlineContent": "このアプリは PWA（プログレッシブ Web アプリ）をサポートしており、デバイスにインストールしてオフラインで使用できます。基本ページと最近使用したプリセットがキャッシュされます。",
+    "opensource": "オープンソースライセンス",
+    "opensourceContent": "このプロジェクトは以下のオープンソースプロジェクトを使用しています：FFmpeg、ffmpeg.wasm、Astro、React、Tailwind CSS など。",
+    "contact": "作者に連絡",
+    "email": "メール",
+    "twitter": "Twitter/X"
+  },
+  "support": {
+    "title": "よくある質問とサポート",
+    "faq": "よくある質問",
+    "q1": "どの動画形式に対応していますか？",
+    "a1": "MP4、MOV、AVI、MKV、WebM、MPEG、FLV、MTS、M2TS、3GP などを含む、ほぼすべての一般的な動画形式に対応しています。",
+    "q2": "ファイルサイズに制限はありますか？",
+    "a2": "最高のパフォーマンスを得るため、200MB 以下の動画ファイルの使用を推奨します。大きなファイルの場合、処理に時間がかかる場合があります。",
+    "q3": "オフラインで使用できますか？",
+    "a3": "はい！このアプリは PWA をサポートしており、インストール後はオフラインで使用できます。",
+    "q4": "動画はサーバーにアップロードされますか？",
+    "a4": "いいえ。すべての変換はブラウザ内でローカルに行われ、動画ファイルをアップロードすることはありません。",
+    "feedback": "フィードバックと提案",
+    "feedbackHint": "ご質問やご提案がございましたら、メールでお問い合わせください。"
+  },
+  "language": {
+    "label": "言語",
+    "chinese": "中文",
+    "english": "English",
+    "japanese": "日本語"
+  },
+  "common": {
+    "loading": "読み込み中...",
+    "error": "エラー",
+    "success": "成功",
+    "cancel": "キャンセル",
+    "confirm": "確認",
+    "close": "閉じる",
+    "save": "保存",
+    "reset": "リセット"
+  }
+}
+

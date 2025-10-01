@@ -1,0 +1,15 @@
+---
+import Layout from '../components/Layout.astro';
+import Navigation from '../components/Navigation';
+import HomePage from '../components/HomePage';
+import Footer from '../components/Footer';
+import I18nProvider from '../components/I18nProvider';
+---
+
+<Layout title="Video2GIF - Turn moments into lightweight GIFs">
+  <I18nProvider client:only="react">
+    <Navigation client:only="react" />
+    <HomePage client:only="react" />
+    <Footer client:only="react" />
+  </I18nProvider>
+</Layout>

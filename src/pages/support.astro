@@ -1,0 +1,15 @@
+---
+import Layout from '../components/Layout.astro';
+import Navigation from '../components/Navigation';
+import SupportPage from '../components/SupportPage';
+import Footer from '../components/Footer';
+import I18nProvider from '../components/I18nProvider';
+---
+
+<Layout title="Support - Video2GIF">
+  <I18nProvider client:only="react">
+    <Navigation client:only="react" />
+    <SupportPage client:only="react" />
+    <Footer client:only="react" />
+  </I18nProvider>
+</Layout>

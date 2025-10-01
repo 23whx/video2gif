@@ -1,0 +1,35 @@
+{
+  "name": "video2gif",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "把精彩瞬间，做成轻盈 GIF - Turn moments into lightweight GIFs",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/react": "^3.6.2",
+    "@astrojs/tailwind": "^5.1.1",
+    "@ffmpeg/ffmpeg": "^0.12.10",
+    "@ffmpeg/util": "^0.12.1",
+    "gif.js": "^0.2.0",
+    "i18next": "^23.15.1",
+    "i18next-browser-languagedetector": "^8.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-i18next": "^15.0.2",
+    "zustand": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.0",
+    "astro": "^4.16.1",
+    "tailwindcss": "^3.4.13",
+    "typescript": "^5.6.2",
+    "vite-plugin-pwa": "^0.20.5",
+    "workbox-window": "^7.1.0"
+  }
+}

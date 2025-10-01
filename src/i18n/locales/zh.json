@@ -1,0 +1,143 @@
+{
+  "app": {
+    "name": "Video2GIF",
+    "tagline": "把精彩瞬间，做成轻盈 GIF。"
+  },
+  "nav": {
+    "home": "首页",
+    "editor": "编辑器",
+    "about": "关于",
+    "support": "支持"
+  },
+  "upload": {
+    "title": "导入视频",
+    "hint": "拖拽或点击选择视频文件",
+    "formats": "支持格式：MP4, MOV, AVI, MKV, WebM, MPEG, FLV, MTS, M2TS, 3GP 等",
+    "maxSize": "建议不超过 200MB 以获得最佳性能",
+    "selectFile": "选择文件",
+    "processing": "处理中...",
+    "error": "上传失败，请重试"
+  },
+  "editor": {
+    "title": "视频编辑器",
+    "preview": "预览",
+    "timeline": "时间轴",
+    "controls": "控制面板",
+    "export": "导出"
+  },
+  "controls": {
+    "size": "尺寸",
+    "width": "宽度",
+    "height": "高度",
+    "lockAspectRatio": "锁定高宽比",
+    "aspectRatio": "高宽比",
+    "fps": "帧率",
+    "quality": "质量",
+    "colors": "颜色数",
+    "loop": "循环",
+    "loopForever": "无限循环",
+    "loopCount": "循环次数",
+    "loopMode": "循环模式",
+    "forward": "正向",
+    "reverse": "反向",
+    "yoyo": "往返",
+    "dither": "抖动算法",
+    "ditherNone": "无",
+    "ditherFS": "Floyd-Steinberg",
+    "ditherOrdered": "有序",
+    "brightness": "亮度",
+    "contrast": "对比度",
+    "saturation": "饱和度",
+    "trim": "裁剪",
+    "startTime": "起始时间",
+    "endTime": "结束时间"
+  },
+  "export": {
+    "action": "导出 GIF",
+    "estimatedSize": "预计大小",
+    "progress": "进度",
+    "download": "再次下载",
+    "share": "分享",
+    "copyToClipboard": "复制到剪贴板",
+    "success": "导出成功！",
+    "error": "导出失败",
+    "downloading": "正在下载...",
+    "downloaded": "GIF 已下载！如需更高质量，可集成 ffmpeg.wasm",
+    "copied": "已复制",
+    "retry": "重试",
+    "processing": "正在处理...",
+    "generating": "正在生成 GIF...",
+    "sizeWarning": "建议：图片大小最好小于 2MB，否则容易导出失败",
+    "sizeWarningShort": "建议 < 2MB",
+    "optimizationTips": "优化建议：",
+    "tipResolution": "降低分辨率（宽度/高度）",
+    "tipFrameRate": "减少帧率（推荐 10-15 FPS）",
+    "tipDuration": "缩短时长（裁剪到关键片段）",
+    "tipColors": "减少颜色数（128 色通常足够）"
+  },
+  "share": {
+    "title": "分享",
+    "text": "我用 Video2GIF 制作了一个 GIF！",
+    "socialMedia": "分享到社交媒体",
+    "orCopyLink": "或复制网站链接",
+    "copyWebsite": "复制网站链接",
+    "linkCopied": "链接已复制"
+  },
+  "home": {
+    "welcome": "欢迎使用 Video2GIF",
+    "description": "一款跨平台的视频转 GIF 工具，支持本地浏览器端处理，保护您的隐私",
+    "features": "核心功能",
+    "feature1": "本地处理，隐私友好",
+    "feature1Desc": "所有转换在浏览器本地完成，无需上传视频",
+    "feature2": "快速可控",
+    "feature2Desc": "灵活调整体积与质量，满足不同需求",
+    "feature3": "一键分享",
+    "feature3Desc": "下载或复制到剪贴板，轻松分享",
+    "getStarted": "开始使用",
+    "recentPresets": "最近使用的预设",
+    "exampleVideos": "示例视频"
+  },
+  "about": {
+    "title": "关于 Video2GIF",
+    "privacy": "隐私政策",
+    "privacyContent": "Video2GIF 默认在浏览器本地进行视频转换，不会上传您的源视频。我们不收集任何内容数据，仅收集匿名性能指标和错误日志以改进产品。",
+    "offline": "离线支持",
+    "offlineContent": "本应用支持 PWA（渐进式 Web 应用），可以安装到您的设备并离线使用。基本页面和最近使用的预设会被缓存。",
+    "opensource": "开源许可",
+    "opensourceContent": "本项目使用了以下开源项目：FFmpeg、ffmpeg.wasm、Astro、React、Tailwind CSS 等。",
+    "contact": "联系作者",
+    "email": "邮箱",
+    "twitter": "Twitter/X"
+  },
+  "support": {
+    "title": "常见问题与支持",
+    "faq": "常见问题",
+    "q1": "支持哪些视频格式？",
+    "a1": "支持几乎所有常见视频格式，包括 MP4、MOV、AVI、MKV、WebM、MPEG、FLV、MTS、M2TS、3GP 等。",
+    "q2": "文件大小有限制吗？",
+    "a2": "为了获得最佳性能，建议使用不超过 200MB 的视频文件。对于更大的文件，可能需要较长的处理时间。",
+    "q3": "可以离线使用吗？",
+    "a3": "是的！本应用支持 PWA，安装后可以离线使用基本功能。",
+    "q4": "视频会上传到服务器吗？",
+    "a4": "不会。所有转换都在您的浏览器本地完成，我们不会上传您的视频文件。",
+    "feedback": "反馈与建议",
+    "feedbackHint": "如有任何问题或建议，请通过邮件联系我们。"
+  },
+  "language": {
+    "label": "语言",
+    "chinese": "中文",
+    "english": "English",
+    "japanese": "日本語"
+  },
+  "common": {
+    "loading": "加载中...",
+    "error": "错误",
+    "success": "成功",
+    "cancel": "取消",
+    "confirm": "确认",
+    "close": "关闭",
+    "save": "保存",
+    "reset": "重置"
+  }
+}
+

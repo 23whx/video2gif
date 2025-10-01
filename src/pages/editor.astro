@@ -1,0 +1,13 @@
+---
+import Layout from '../components/Layout.astro';
+import Navigation from '../components/Navigation';
+import EditorApp from '../components/EditorApp';
+import I18nProvider from '../components/I18nProvider';
+---
+
+<Layout title="Editor - Video2GIF">
+  <I18nProvider client:only="react">
+    <Navigation client:only="react" />
+    <EditorApp client:only="react" />
+  </I18nProvider>
+</Layout>

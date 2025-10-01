@@ -1,0 +1,143 @@
+{
+  "app": {
+    "name": "Video2GIF",
+    "tagline": "Turn moments into lightweight GIFs."
+  },
+  "nav": {
+    "home": "Home",
+    "editor": "Editor",
+    "about": "About",
+    "support": "Support"
+  },
+  "upload": {
+    "title": "Import Video",
+    "hint": "Drag & drop or click to select video file",
+    "formats": "Supported formats: MP4, MOV, AVI, MKV, WebM, MPEG, FLV, MTS, M2TS, 3GP, etc.",
+    "maxSize": "Recommended max 200MB for best performance",
+    "selectFile": "Select File",
+    "processing": "Processing...",
+    "error": "Upload failed, please try again"
+  },
+  "editor": {
+    "title": "Video Editor",
+    "preview": "Preview",
+    "timeline": "Timeline",
+    "controls": "Control Panel",
+    "export": "Export"
+  },
+  "controls": {
+    "size": "Size",
+    "width": "Width",
+    "height": "Height",
+    "lockAspectRatio": "Lock Aspect Ratio",
+    "aspectRatio": "Aspect Ratio",
+    "fps": "FPS",
+    "quality": "Quality",
+    "colors": "Colors",
+    "loop": "Loop",
+    "loopForever": "Loop Forever",
+    "loopCount": "Loop Count",
+    "loopMode": "Loop Mode",
+    "forward": "Forward",
+    "reverse": "Reverse",
+    "yoyo": "Yo-Yo",
+    "dither": "Dither",
+    "ditherNone": "None",
+    "ditherFS": "Floyd-Steinberg",
+    "ditherOrdered": "Ordered",
+    "brightness": "Brightness",
+    "contrast": "Contrast",
+    "saturation": "Saturation",
+    "trim": "Trim",
+    "startTime": "Start Time",
+    "endTime": "End Time"
+  },
+  "export": {
+    "action": "Export GIF",
+    "estimatedSize": "Estimated Size",
+    "progress": "Progress",
+    "download": "Download Again",
+    "share": "Share",
+    "copyToClipboard": "Copy to Clipboard",
+    "success": "Export successful!",
+    "error": "Export failed",
+    "downloading": "Downloading...",
+    "downloaded": "GIF downloaded! For higher quality, integrate ffmpeg.wasm",
+    "copied": "Copied",
+    "retry": "Retry",
+    "processing": "Processing...",
+    "generating": "Generating GIF...",
+    "sizeWarning": "Tip: Keep file size under 2MB for best results, larger files may fail to export",
+    "sizeWarningShort": "Recommended < 2MB",
+    "optimizationTips": "Optimization Tips:",
+    "tipResolution": "Reduce resolution (width/height)",
+    "tipFrameRate": "Lower frame rate (10-15 FPS recommended)",
+    "tipDuration": "Shorten duration (trim to key segments)",
+    "tipColors": "Reduce colors (128 colors usually sufficient)"
+  },
+  "share": {
+    "title": "Share",
+    "text": "I created a GIF with Video2GIF!",
+    "socialMedia": "Share to Social Media",
+    "orCopyLink": "Or copy website link",
+    "copyWebsite": "Copy Website Link",
+    "linkCopied": "Link Copied"
+  },
+  "home": {
+    "welcome": "Welcome to Video2GIF",
+    "description": "A cross-platform video-to-GIF tool with local browser processing to protect your privacy",
+    "features": "Core Features",
+    "feature1": "Local Processing",
+    "feature1Desc": "All conversions happen locally in your browser, no upload required",
+    "feature2": "Fast & Controllable",
+    "feature2Desc": "Flexibly adjust size and quality to meet different needs",
+    "feature3": "One-Click Sharing",
+    "feature3Desc": "Download or copy to clipboard for easy sharing",
+    "getStarted": "Get Started",
+    "recentPresets": "Recent Presets",
+    "exampleVideos": "Example Videos"
+  },
+  "about": {
+    "title": "About Video2GIF",
+    "privacy": "Privacy Policy",
+    "privacyContent": "Video2GIF processes videos locally in your browser by default and does not upload your source videos. We do not collect any content data, only anonymous performance metrics and error logs to improve the product.",
+    "offline": "Offline Support",
+    "offlineContent": "This app supports PWA (Progressive Web App) and can be installed on your device for offline use. Basic pages and recently used presets are cached.",
+    "opensource": "Open Source Licenses",
+    "opensourceContent": "This project uses the following open source projects: FFmpeg, ffmpeg.wasm, Astro, React, Tailwind CSS, etc.",
+    "contact": "Contact Author",
+    "email": "Email",
+    "twitter": "Twitter/X"
+  },
+  "support": {
+    "title": "FAQ & Support",
+    "faq": "Frequently Asked Questions",
+    "q1": "What video formats are supported?",
+    "a1": "Almost all common video formats are supported, including MP4, MOV, AVI, MKV, WebM, MPEG, FLV, MTS, M2TS, 3GP, etc.",
+    "q2": "Is there a file size limit?",
+    "a2": "For best performance, we recommend using video files no larger than 200MB. Larger files may require longer processing time.",
+    "q3": "Can I use it offline?",
+    "a3": "Yes! This app supports PWA and can be used offline after installation.",
+    "q4": "Are videos uploaded to a server?",
+    "a4": "No. All conversions are done locally in your browser, and we do not upload your video files.",
+    "feedback": "Feedback & Suggestions",
+    "feedbackHint": "If you have any questions or suggestions, please contact us via email."
+  },
+  "language": {
+    "label": "Language",
+    "chinese": "中文",
+    "english": "English",
+    "japanese": "日本語"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "close": "Close",
+    "save": "Save",
+    "reset": "Reset"
+  }
+}
+

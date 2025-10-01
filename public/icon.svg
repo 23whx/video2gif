@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E8F5E9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C8E6C9;stop-opacity:1" />
+    </linearGradient>
+    <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8"/>
+      <feOffset dx="0" dy="4" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- 背景圆角矩形 -->
+  <rect width="512" height="512" rx="120" fill="url(#bgGradient)"/>
+  
+  <!-- 视频胶片框 -->
+  <g filter="url(#softShadow)">
+    <!-- 胶片主体 -->
+    <rect x="100" y="140" width="200" height="240" rx="16" fill="#0F172A" opacity="0.9"/>
+    
+    <!-- 胶片孔 -->
+    <circle cx="120" cy="170" r="8" fill="#E8F5E9"/>
+    <circle cx="120" cy="210" r="8" fill="#E8F5E9"/>
+    <circle cx="120" cy="250" r="8" fill="#E8F5E9"/>
+    <circle cx="120" cy="290" r="8" fill="#E8F5E9"/>
+    <circle cx="120" cy="330" r="8" fill="#E8F5E9"/>
+    <circle cx="120" cy="350" r="8" fill="#E8F5E9"/>
+    
+    <circle cx="280" cy="170" r="8" fill="#E8F5E9"/>
+    <circle cx="280" cy="210" r="8" fill="#E8F5E9"/>
+    <circle cx="280" cy="250" r="8" fill="#E8F5E9"/>
+    <circle cx="280" cy="290" r="8" fill="#E8F5E9"/>
+    <circle cx="280" cy="330" r="8" fill="#E8F5E9"/>
+    <circle cx="280" cy="350" r="8" fill="#E8F5E9"/>
+    
+    <!-- 胶片帧 -->
+    <rect x="145" y="165" width="110" height="70" rx="8" fill="#FFFFFF" opacity="0.2"/>
+    <rect x="145" y="250" width="110" height="70" rx="8" fill="#FFFFFF" opacity="0.2"/>
+  </g>
+  
+  <!-- 箭头 -->
+  <g filter="url(#softShadow)">
+    <path d="M 310 240 L 360 260 L 310 280 Z" fill="#E95656"/>
+    <rect x="320" y="255" width="40" height="10" fill="#E95656"/>
+  </g>
+  
+  <!-- GIF 文本框 -->
+  <g filter="url(#softShadow)">
+    <rect x="240" y="320" width="180" height="80" rx="20" fill="#E95656"/>
+    <text x="330" y="375" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#FFFFFF" text-anchor="middle">GIF</text>
+  </g>
+  
+  <!-- 装饰性圆点 -->
+  <circle cx="380" cy="160" r="6" fill="#E95656" opacity="0.6"/>
+  <circle cx="410" cy="180" r="4" fill="#E95656" opacity="0.4"/>
+  <circle cx="360" cy="190" r="5" fill="#E95656" opacity="0.5"/>
+</svg>
+
