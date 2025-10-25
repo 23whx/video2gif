@@ -9,7 +9,9 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "postinstall": "node -e \"try{require('fs').copyFileSync('node_modules/gif.js/dist/gif.js','public/gif.js');require('fs').copyFileSync('node_modules/gif.js/dist/gif.worker.js','public/gif.worker.js');}catch(e){}\""
+    "postinstall": "node -e \"try{require('fs').copyFileSync('node_modules/gif.js/dist/gif.js','public/gif.js');require('fs').copyFileSync('node_modules/gif.js/dist/gif.worker.js','public/gif.worker.js');}catch(e){}\"",
+    "icons:check": "node scripts/generate-icons.js",
+    "icons:generate": "echo 请访问 http://localhost:4321/generate-icons.html 生成图标 && npm run dev"
   },
   "dependencies": {
     "@astrojs/react": "^3.6.2",

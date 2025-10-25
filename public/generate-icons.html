@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video2GIF - 图标生成器</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #2E7D32;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .status {
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .status.success {
+            background: #E8F5E9;
+            color: #2E7D32;
+            border: 1px solid #81C784;
+            display: block;
+        }
+        
+        .status.error {
+            background: #FFEBEE;
+            color: #C62828;
+            border: 1px solid #EF5350;
+            display: block;
+        }
+        
+        .status.info {
+            background: #E3F2FD;
+            color: #1565C0;
+            border: 1px solid #64B5F6;
+            display: block;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #E95656 0%, #D32F2F 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin: 10px 10px 10px 0;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(233, 86, 86, 0.3);
+        }
+        
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .preview-item {
+            text-align: center;
+            padding: 20px;
+            background: #F5F5F5;
+            border-radius: 10px;
+        }
+        
+        .preview-item canvas {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+            background: white;
+            border-radius: 5px;
+        }
+        
+        .preview-item .label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .download-btn {
+            padding: 8px 16px;
+            font-size: 14px;
+            background: #2E7D32;
+        }
+        
+        .instructions {
+            background: #FFF3E0;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            border-left: 4px solid #FF9800;
+        }
+        
+        .instructions h3 {
+            color: #E65100;
+            margin-bottom: 10px;
+        }
+        
+        .instructions ol {
+            margin-left: 20px;
+            color: #666;
+        }
+        
+        .instructions li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Video2GIF 图标生成器</h1>
+        <p class="subtitle">从 favicon.webp 和 icon.webp 生成所需的各种格式图标</p>
+        
+        <div id="status" class="status"></div>
+        
+        <button id="generateBtn" onclick="generateAllIcons()">🚀 生成所有图标</button>
+        <button onclick="downloadAll()">📦 打包下载全部</button>
+        
+        <div id="preview" class="preview-grid"></div>
+        
+        <div class="instructions">
+            <h3>📋 使用说明</h3>
+            <ol>
+                <li>点击"生成所有图标"按钮，将自动从 favicon.webp 和 icon.webp 生成所需的图标</li>
+                <li>生成完成后，可以单独下载每个图标，或点击"打包下载全部"</li>
+                <li>将下载的图标文件放到项目的 <code>public</code> 文件夹中</li>
+                <li>生成的图标包括：
+                    <ul>
+                        <li>favicon.ico (16x16, 32x32, 48x48 多尺寸)</li>
+                        <li>favicon-16x16.png</li>
+                        <li>favicon-32x32.png</li>
+                        <li>apple-touch-icon.png (180x180)</li>
+                        <li>icon-192x192.png</li>
+                        <li>icon-512x512.png</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        let generatedImages = {};
+
+        function showStatus(message, type = 'info') {
+            const status = document.getElementById('status');
+            status.textContent = message;
+            status.className = `status ${type}`;
+        }
+
+        async function loadImage(url) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.crossOrigin = 'anonymous';
+                img.onload = () => resolve(img);
+                img.onerror = reject;
+                img.src = url;
+            });
+        }
+
+        function resizeImage(img, width, height) {
+            const canvas = document.createElement('canvas');
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            
+            // 使用高质量缩放
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = 'high';
+            
+            // 计算居中绘制
+            const aspectRatio = img.width / img.height;
+            let drawWidth = width;
+            let drawHeight = height;
+            let offsetX = 0;
+            let offsetY = 0;
+            
+            if (aspectRatio > 1) {
+                drawHeight = width / aspectRatio;
+                offsetY = (height - drawHeight) / 2;
+            } else {
+                drawWidth = height * aspectRatio;
+                offsetX = (width - drawWidth) / 2;
+            }
+            
+            ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
+            return canvas;
+        }
+
+        async function generatePNG(img, size, name) {
+            const canvas = resizeImage(img, size, size);
+            const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+            generatedImages[name] = blob;
+            return canvas;
+        }
+
+        async function generateICO(img) {
+            // 生成多尺寸 ICO（简化版，生成单尺寸 32x32）
+            const canvas = resizeImage(img, 32, 32);
+            const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+            generatedImages['favicon.ico'] = blob;
+            return canvas;
+        }
+
+        function addPreviewItem(canvas, name, filename) {
+            const preview = document.getElementById('preview');
+            const item = document.createElement('div');
+            item.className = 'preview-item';
+            
+            const label = document.createElement('div');
+            label.className = 'label';
+            label.textContent = name;
+            
+            const previewCanvas = document.createElement('canvas');
+            const size = Math.min(canvas.width, 128);
+            previewCanvas.width = size;
+            previewCanvas.height = size;
+            const ctx = previewCanvas.getContext('2d');
+            ctx.drawImage(canvas, 0, 0, canvas.width, canvas.height, 0, 0, size, size);
+            
+            const downloadBtn = document.createElement('button');
+            downloadBtn.className = 'download-btn';
+            downloadBtn.textContent = '下载';
+            downloadBtn.onclick = () => downloadImage(filename);
+            
+            item.appendChild(label);
+            item.appendChild(previewCanvas);
+            item.appendChild(downloadBtn);
+            preview.appendChild(item);
+        }
+
+        function downloadImage(filename) {
+            const blob = generatedImages[filename];
+            if (!blob) return;
+            
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        async function generateAllIcons() {
+            const btn = document.getElementById('generateBtn');
+            btn.disabled = true;
+            document.getElementById('preview').innerHTML = '';
+            generatedImages = {};
+            
+            try {
+                showStatus('⏳ 正在加载图标文件...', 'info');
+                
+                // 加载源图片
+                const favicon = await loadImage('/favicon.webp');
+                const icon = await loadImage('/icon.webp');
+                
+                showStatus('🎨 正在生成各种尺寸的图标...', 'info');
+                
+                // 生成 favicon 系列
+                const favicon16 = await generatePNG(favicon, 16, 'favicon-16x16.png');
+                addPreviewItem(favicon16, 'Favicon 16x16', 'favicon-16x16.png');
+                
+                const favicon32 = await generatePNG(favicon, 32, 'favicon-32x32.png');
+                addPreviewItem(favicon32, 'Favicon 32x32', 'favicon-32x32.png');
+                
+                const faviconIco = await generateICO(favicon);
+                addPreviewItem(faviconIco, 'Favicon ICO', 'favicon.ico');
+                
+                // 生成 Apple Touch Icon
+                const appleTouchIcon = await generatePNG(icon, 180, 'apple-touch-icon.png');
+                addPreviewItem(appleTouchIcon, 'Apple Touch Icon', 'apple-touch-icon.png');
+                
+                // 生成 PWA 图标
+                const icon192 = await generatePNG(icon, 192, 'icon-192x192.png');
+                addPreviewItem(icon192, 'PWA Icon 192x192', 'icon-192x192.png');
+                
+                const icon512 = await generatePNG(icon, 512, 'icon-512x512.png');
+                addPreviewItem(icon512, 'PWA Icon 512x512', 'icon-512x512.png');
+                
+                showStatus('✅ 所有图标生成成功！请下载并放入 public 文件夹', 'success');
+                
+            } catch (error) {
+                showStatus('❌ 生成失败：' + error.message, 'error');
+                console.error(error);
+            } finally {
+                btn.disabled = false;
+            }
+        }
+
+        async function downloadAll() {
+            if (Object.keys(generatedImages).length === 0) {
+                showStatus('⚠️ 请先生成图标', 'error');
+                return;
+            }
+            
+            showStatus('📦 正在准备下载...', 'info');
+            
+            // 由于浏览器限制，我们逐个下载
+            for (const [filename, blob] of Object.entries(generatedImages)) {
+                await new Promise(resolve => setTimeout(resolve, 200));
+                downloadImage(filename);
+            }
+            
+            showStatus('✅ 所有图标已下载！', 'success');
+        }
+    </script>
+</body>
+</html>
+
