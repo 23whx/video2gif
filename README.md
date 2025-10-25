@@ -45,6 +45,18 @@ npm run build
 npm run preview
 ```
 
+### 图标管理
+
+```bash
+# 检查图标状态
+npm run icons:check
+
+# 重新生成图标（如果更新了源图标）
+npm run icons:generate
+```
+
+> 📝 所有图标已自动生成并配置完成，支持浏览器、PWA、iOS 设备和导航站显示
+
 ## 🛠️ 技术栈
 
 - **前端框架**: Astro (静态站点生成器)
